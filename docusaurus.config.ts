@@ -17,11 +17,12 @@ const config: Config = {
 
   themes: ['@docusaurus/theme-mermaid'],
 
-  url: 'https://your-docusaurus-site.example.com',
-  baseUrl: '/',
+  url: 'https://kavindadimuthu.github.io',
+  baseUrl: '/research-hub/',
 
-  organizationName: 'ucsc-research',
-  projectName: 'transit-demand-forecasting',
+  organizationName: 'kavindadimuthu',
+  projectName: 'research-hub',
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
 
