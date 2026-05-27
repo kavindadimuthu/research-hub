@@ -1,0 +1,19 @@
+progress:
+  label: Progress Update
+  description: Monthly progress updates on the research project
+
+data:
+  label: Data
+  description: Posts about data collection and preparation
+
+methods:
+  label: Methods
+  description: Posts about model development and experimentation
+
+results:
+  label: Results
+  description: Posts reporting evaluation results
+
+planning:
+  label: Planning
+  description: Posts about research planning and methodology
