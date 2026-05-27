@@ -7,22 +7,33 @@ title: Timeline & Progress
 
 ## Gantt chart
 
-The project spans 12 months. The current position is at the end of **Month 2**.
+The project spans 12 months from **April 2026 to March 2027**. The current date marker shows where we are now.
 
-```
-Task                                      M1  M2  M3  M4  M5  M6  M7  M8  M9  M10 M11 M12
-─────────────────────────────────────────────────────────────────────────────────────────
-Literature review & proposal              ████████░░
-Data sourcing & access agreements             ██░░░░░░
-Data pre-processing & exploratory analysis            ██████████
-Baseline & ML model development                   ████████████
-Deep learning model development                               ████████
-Hyperparameter tuning & refinement                                    ████
-Evaluation on local & global datasets                                     ████
-Error analysis & documentation                                                ████
-Thesis writing & submission                                                       ████
+```mermaid
+gantt
+    title Project Timeline
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %Y
+    todayMarker on
 
-█ = completed   ░ = remaining
+    section Planning
+    Literature review & proposal        :done,    lit,    2026-04-01, 2026-05-31
+    Data sourcing & access agreements   :active,  data,   2026-05-01, 2026-06-30
+
+    section Phase 1 — Data
+    Data pre-processing & EDA           :         eda,    2026-06-01, 2026-08-31
+
+    section Phase 2–3 — Modelling
+    Baseline & ML model development     :         ml,     2026-07-01, 2026-09-30
+    Deep learning model development     :         dl,     2026-09-01, 2026-11-30
+    Hyperparameter tuning & refinement  :         tune,   2026-11-01, 2026-12-31
+
+    section Phase 4 — Evaluation
+    Evaluation on local & global data   :         eval,   2026-12-01, 2027-01-31
+    Error analysis & documentation      :         err,    2027-01-01, 2027-02-28
+
+    section Thesis
+    Thesis writing & submission         :         thesis, 2027-02-01, 2027-03-31
 ```
 
 ---

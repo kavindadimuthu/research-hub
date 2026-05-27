@@ -13,6 +13,36 @@ To produce a rigorous, evidence-based characterisation of the developed forecast
 
 ## Two-track evaluation
 
+```mermaid
+flowchart LR
+    MODEL["✅ Developed\nForecasting Model"]:::model
+
+    MODEL --> A & B
+
+    subgraph A["Track A — Local Data"]
+        A1["Sri Lankan corridors\nheld-out test periods"]
+        A2["In-domain validity\nunder real conditions"]
+        A1 --> A2
+    end
+
+    subgraph B["Track B — Global Benchmarks"]
+        B1["Public international\ntransit datasets"]
+        B2["Generalisability &\nliterature comparison"]
+        B1 --> B2
+    end
+
+    A2 --> METRICS
+    B2 --> METRICS
+
+    METRICS["📊 MAE · RMSE · MAPE · sMAPE\nDiebold–Mariano significance tests\nRobustness & subgroup analysis\nError analysis"]:::metrics
+
+    METRICS --> OUT["📄 Fully evaluated model\nwith documented performance\nand limitations"]:::output
+
+    classDef model fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef metrics fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef output fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+```
+
 The developed model is evaluated on two classes of held-out data:
 
 ### Track A — Local datasets

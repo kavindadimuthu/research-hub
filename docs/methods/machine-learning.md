@@ -57,10 +57,23 @@ Trend is modelled as piecewise linear or logistic growth with automatic changepo
 
 All three models are trained and evaluated using **rolling-origin cross-validation**:
 
-```
-Train ──────────────────────────▶|  Val  | (fold 1)
-Train ──────────────────────────────────▶|  Val  | (fold 2)
-...
+```mermaid
+gantt
+    title Rolling-Origin Cross-Validation
+    dateFormat  D
+    axisFormat  
+
+    section Fold 1
+    Train   :done,   t1, 1, 8
+    Val     :active, v1, 8, 10
+
+    section Fold 2
+    Train   :done,   t2, 1, 10
+    Val     :active, v2, 10, 12
+
+    section Fold 3
+    Train   :done,   t3, 1, 12
+    Val     :active, v3, 12, 14
 ```
 
-This prevents data leakage and mimics the operational setting where the model is always predicting the future from past observations.
+Each fold expands the training window forward in time and forecasts the immediately following validation period. This prevents data leakage and mimics the operational setting where the model always trains on past data and predicts the future.

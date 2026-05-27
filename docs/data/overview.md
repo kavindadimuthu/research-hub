@@ -9,21 +9,27 @@ title: Data Sources Overview
 
 Five heterogeneous data streams are integrated into a unified spatial-temporal dataset. Each stream brings a different type of information about the demand-generation process.
 
-```
-SLTB & private operators ──────────────────┐
-(ticketing / AFC records)                  │
-                                           │
-NTC tracking platforms ────────────────────┤
-(GPS / AVL feeds)                          │     Unified
-                                           ├──▶  Spatial-Temporal  ──▶  Ready for
-Dept. of Meteorology ──────────────────────┤     Dataset               Modelling
-(hourly weather observations)              │     (route-stop level,
-                                           │     common time resolution)
-Dept. of Census & Statistics ──────────────┤
-(socio-demographic context)                │
-                                           │
-Calendar data ─────────────────────────────┘
-(holidays, school terms, festivals)
+```mermaid
+flowchart LR
+    S1["🎫 SLTB & private operators\nticketing / AFC records"]:::source
+    S2["📡 NTC tracking platforms\nGPS / AVL feeds"]:::source
+    S3["🌧️ Dept. of Meteorology\nhourly weather observations"]:::source
+    S4["🏙️ Dept. of Census & Statistics\nsocio-demographic context"]:::source
+    S5["📅 Calendar data\nholidays, school terms, festivals"]:::source
+
+    U["Unified\nSpatial-Temporal\nDataset\n\nroute-stop level\ncommon time resolution"]:::unified
+    OUT["✅ Ready for\nModelling"]:::output
+
+    S1 --> U
+    S2 --> U
+    S3 --> U
+    S4 --> U
+    S5 --> U
+    U --> OUT
+
+    classDef source fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+    classDef unified fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e,font-weight:bold
+    classDef output fill:#dcfce7,stroke:#16a34a,color:#14532d
 ```
 
 ---

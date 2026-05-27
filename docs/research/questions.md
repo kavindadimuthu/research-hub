@@ -37,6 +37,24 @@ Evaluation on held-out local data assesses in-domain validity. Evaluation on pub
 
 ## Objectives
 
+```mermaid
+flowchart TD
+    O1["O1 — Data Preparation\nMulti-source dataset · Feature identification\nAddresses RQ1"]:::obj
+    O2["O2 — Method Selection\nComparative experimentation\nStatistical · ML · DL\nAddresses RQ2"]:::obj
+    O3["O3 — Model Design & Development\nIntegrate features + selected methods\nAddresses RQ3"]:::obj
+    O4["O4 — Evaluation\nLocal Sri Lankan data +\nGlobal transit benchmarks\nAddresses RQ4"]:::obj
+    O5["O5 — Documentation\nFindings · Limitations\nFuture work recommendations"]:::obj
+
+    O1 --> O2 --> O3 --> O4 --> O5
+
+    RQ1["RQ1\nFeature identification"] -.-> O1
+    RQ2["RQ2\nMethod selection"] -.-> O2
+    RQ3["RQ3\nModel design"] -.-> O3
+    RQ4["RQ4\nEvaluation"] -.-> O4
+
+    classDef obj fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+```
+
 | Objective | Addresses | Description |
 |---|---|---|
 | **O1** | RQ1 | Compile and pre-process a multi-source dataset (ridership, GPS/AVL, weather, calendar, census) and identify the features that most strongly predict demand |

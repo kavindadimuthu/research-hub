@@ -20,26 +20,40 @@ No method is assumed to dominate in advance. The literature suggests that:
 
 ## Candidate methods at a glance
 
-```
-Engineered Feature Set
-(historical demand · GPS occupancy · weather · calendar · sociodemographic)
-         │
-         ├──▶ Baselines       ├── Naive
-         │                   ├── Seasonal Naive
-         │                   └── ARIMA / SARIMA
-         │
-         ├──▶ Machine         ├── Random Forest
-         │    Learning        ├── XGBoost
-         │                   └── Prophet
-         │
-         └──▶ Deep            ├── LSTM
-              Learning        ├── Seq2Seq
-                              └── Graph NN (optional)
-                                       │
-                              Method Selection & Evaluation
-                              (MAE · RMSE · MAPE · Diebold–Mariano)
-                                       │
-                              Developed Forecasting Model
+```mermaid
+flowchart TD
+    INPUT["📥 Engineered Feature Set\nhistorical demand · GPS occupancy · weather · calendar · sociodemographic"]:::input
+
+    INPUT --> BASE & ML & DL
+
+    subgraph BASE["Baselines"]
+        B1["Naive"]
+        B2["Seasonal Naive"]
+        B3["ARIMA / SARIMA"]
+    end
+
+    subgraph ML["Machine Learning"]
+        M1["Random Forest"]
+        M2["XGBoost"]
+        M3["Prophet"]
+    end
+
+    subgraph DL["Deep Learning"]
+        D1["LSTM"]
+        D2["Seq2Seq"]
+        D3["Graph NN (optional)"]
+    end
+
+    BASE --> EVAL
+    ML --> EVAL
+    DL --> EVAL
+
+    EVAL["📊 Method Selection & Evaluation\nMAE · RMSE · MAPE · Diebold–Mariano · Robustness"]:::eval
+    EVAL --> OUT["✅ Developed Forecasting Model"]:::output
+
+    classDef input fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+    classDef eval fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef output fill:#dcfce7,stroke:#16a34a,color:#14532d
 ```
 
 ---

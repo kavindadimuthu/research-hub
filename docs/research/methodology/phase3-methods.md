@@ -56,6 +56,23 @@ Hyperparameters are tuned on the held-out validation slices using grid search (f
 
 ## Step 2 — Method selection
 
+```mermaid
+flowchart LR
+    VALID["Rolling-Origin\nCross-Validation\nResults"]:::input
+
+    VALID --> ST["Short-term\nhorizons\n1h · 6h · 24h"]
+    VALID --> LT["Long-term\nhorizons\n7d · 30d"]
+
+    ST --> DM1["Diebold–Mariano\nTests"]
+    LT --> DM1
+
+    DM1 --> SEL["Best-performing\nmethod(s) selected"]:::output
+    SEL --> DESIGN["→ Phase 3 Step 3\nModel Design"]
+
+    classDef input fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef output fill:#dcfce7,stroke:#16a34a,color:#14532d
+```
+
 Method selection is made on the basis of validation performance across both:
 
 - **Short-term horizons** (hourly/daily forecasts)

@@ -42,12 +42,19 @@ Five data streams will be combined:
 
 ## Integration pipeline
 
-All five streams will be:
+```mermaid
+flowchart TD
+    RAW["📦 Raw Data Streams\nAFC · GPS · Weather · Census · Calendar"]:::raw
 
-1. **Cleaned** — outlier removal, missing value imputation, format standardisation
-2. **Aligned** to a common temporal resolution (hourly for short-term models, daily for long-term)
-3. **Geocoded** to the route and stop level using OpenStreetMap and NTC network data
-4. **Merged** into a single feature matrix indexed by `(route_id, stop_id, timestamp)`
+    RAW --> CLEAN["🧹 Clean\nOutlier removal · Missing value imputation\nFormat standardisation"]
+    CLEAN --> ALIGN["⏱️ Align\nCommon temporal resolution\nhourly for short-term · daily for long-term"]
+    ALIGN --> GEO["📍 Geocode\nRoute and stop level\nOpenStreetMap + NTC network data"]
+    GEO --> MERGE["🔗 Merge\nFeature matrix indexed by\nroute_id · stop_id · timestamp"]
+    MERGE --> OUT["✅ Unified Spatial-Temporal Dataset\nReady for EDA"]:::output
+
+    classDef raw fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+    classDef output fill:#dcfce7,stroke:#16a34a,color:#14532d
+```
 
 Where AFC ticketing data is unavailable, **proxy variables** will be used: on-board occupancy estimated from GPS dwell times at stops.
 

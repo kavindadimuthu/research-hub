@@ -13,12 +13,24 @@ This study follows the **Design Science Research (DSR)** methodology (Hevner et 
 
 ## Four-phase framework
 
-The work is organised into four sequential phases:
+The work is organised into four sequential phases, each feeding the next:
 
-```
-Phase 1            Phase 2            Phase 3                    Phase 4
-Data Acquisition → EDA            → Method Selection &      → Evaluation
-& Preparation      & Feature Eng.   Model Design/Development
+```mermaid
+flowchart LR
+    P1["🗃️ Phase 1\nData Acquisition\n& Preparation"]:::phase --> P2
+    P2["🔍 Phase 2\nEDA &\nFeature Engineering"]:::phase --> P3
+    P3["⚙️ Phase 3\nMethod Selection &\nModel Design"]:::phase --> P4
+    P4["📊 Phase 4\nEvaluation"]:::phase --> OUT
+
+    OUT["✅ Validated\nForecasting\nModel"]:::output
+
+    P1 -.->|AFC · GPS · Weather\nCalendar · Census| P1
+    P2 -.->|Cleaning · Alignment\nFeature Engineering| P2
+    P3 -.->|Compare Candidates\nDesign Final Model| P3
+    P4 -.->|Local & Global Data\nAccuracy · DM Tests| P4
+
+    classDef phase fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+    classDef output fill:#dcfce7,stroke:#16a34a,color:#14532d
 ```
 
 Each phase feeds the next. The final phase produces a **validated forecasting model** as the project's deliverable.
