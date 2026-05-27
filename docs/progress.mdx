@@ -1,0 +1,185 @@
+---
+sidebar_position: 10
+title: Timeline & Progress
+---
+
+export function GanttChart() {
+  const D = { backgroundColor: '#16a34a' };
+  const A = { backgroundColor: '#2563eb' };
+  const P = { backgroundColor: '#93c5fd' };
+  const E = null;
+
+  const months = [
+    { short: 'Apr', year: '2026', current: false },
+    { short: 'May', year: '2026', current: true  },
+    { short: 'Jun', year: '2026', current: false },
+    { short: 'Jul', year: '2026', current: false },
+    { short: 'Aug', year: '2026', current: false },
+    { short: 'Sep', year: '2026', current: false },
+    { short: 'Oct', year: '2026', current: false },
+    { short: 'Nov', year: '2026', current: false },
+    { short: 'Dec', year: '2026', current: false },
+    { short: 'Jan', year: '2027', current: false },
+    { short: 'Feb', year: '2027', current: false },
+    { short: 'Mar', year: '2027', current: false },
+  ];
+
+  const rows = [
+    { kind: 'section', label: 'Planning' },
+    { kind: 'task', name: 'Literature review & proposal',       note: '80%', cells: [D,D,E,E,E,E,E,E,E,E,E,E] },
+    { kind: 'task', name: 'Data sourcing & access agreements',  note: '25%', cells: [E,A,P,E,E,E,E,E,E,E,E,E] },
+    { kind: 'section', label: 'Phase 1 — Data' },
+    { kind: 'task', name: 'Data pre-processing & EDA',          note: null,  cells: [E,E,P,P,P,E,E,E,E,E,E,E] },
+    { kind: 'section', label: 'Phase 2–3 — Modelling' },
+    { kind: 'task', name: 'Baseline & ML model development',    note: null,  cells: [E,E,E,P,P,P,E,E,E,E,E,E] },
+    { kind: 'task', name: 'Deep learning model development',    note: null,  cells: [E,E,E,E,E,P,P,P,E,E,E,E] },
+    { kind: 'task', name: 'Hyperparameter tuning & refinement', note: null,  cells: [E,E,E,E,E,E,E,P,P,E,E,E] },
+    { kind: 'section', label: 'Phase 4 — Evaluation' },
+    { kind: 'task', name: 'Evaluation on local & global data',  note: null,  cells: [E,E,E,E,E,E,E,E,P,P,E,E] },
+    { kind: 'task', name: 'Error analysis & documentation',     note: null,  cells: [E,E,E,E,E,E,E,E,E,P,P,E] },
+    { kind: 'section', label: 'Thesis' },
+    { kind: 'task', name: 'Thesis writing & submission',        note: null,  cells: [E,E,E,E,E,E,E,E,E,E,P,P] },
+  ];
+
+  const border = '1px solid var(--ifm-table-border-color)';
+
+  return (
+    <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
+      <table style={{ borderCollapse: 'collapse', minWidth: '900px', width: '100%', tableLayout: 'fixed' }}>
+        <colgroup>
+          <col style={{ width: '230px' }} />
+          {months.map((_, i) => <col key={i} style={{ width: '56px' }} />)}
+        </colgroup>
+
+        <thead>
+          <tr>
+            <th style={{ padding: '10px 14px', border, textAlign: 'left', fontSize: '0.875rem', fontWeight: 600 }}>
+              Task
+            </th>
+            {months.map((m, i) => (
+              <th key={i} style={{
+                padding: '8px 4px',
+                border,
+                textAlign: 'center',
+                fontSize: '0.8rem',
+                fontWeight: m.current ? 700 : 500,
+                backgroundColor: m.current ? '#fef9c3' : 'var(--ifm-table-head-background)',
+                color: m.current ? '#92400e' : 'inherit',
+                lineHeight: 1.35,
+              }}>
+                <div>{m.short}</div>
+                <div style={{ fontSize: '0.68rem', fontWeight: 400, opacity: 0.7 }}>{m.year}</div>
+                {m.current && <div style={{ fontSize: '0.62rem', color: '#d97706', marginTop: '2px' }}>▼ now</div>}
+              </th>
+            ))}
+          </tr>
+        </thead>
+
+        <tbody>
+          {rows.map((row, ri) => {
+            if (row.kind === 'section') {
+              return (
+                <tr key={ri}>
+                  <td colSpan={13} style={{
+                    padding: '7px 14px',
+                    border,
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.07em',
+                    backgroundColor: 'var(--ifm-table-stripe-background)',
+                    color: 'var(--ifm-color-content-secondary)',
+                  }}>
+                    {row.label}
+                  </td>
+                </tr>
+              );
+            }
+
+            return (
+              <tr key={ri}>
+                <td style={{ padding: '7px 14px', border, fontSize: '0.875rem', verticalAlign: 'middle' }}>
+                  {row.name}
+                  {row.note && (
+                    <span style={{ marginLeft: '7px', fontSize: '0.72rem', color: 'var(--ifm-color-content-secondary)', fontStyle: 'italic' }}>
+                      {row.note}
+                    </span>
+                  )}
+                </td>
+                {row.cells.map((cell, ci) => (
+                  <td key={ci} style={{
+                    border,
+                    padding: '5px 4px',
+                    backgroundColor: months[ci].current ? 'rgba(254,243,199,0.3)' : undefined,
+                    verticalAlign: 'middle',
+                  }}>
+                    {cell && (
+                      <div style={{ ...cell, height: '26px', borderRadius: '4px', width: '100%' }} />
+                    )}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+
+      <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginTop: '10px', fontSize: '0.8rem', color: 'var(--ifm-color-content-secondary)' }}>
+        {[
+          { color: '#16a34a', label: 'Completed' },
+          { color: '#2563eb', label: 'In progress' },
+          { color: '#93c5fd', label: 'Planned' },
+        ].map(({ color, label }) => (
+          <span key={label} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <span style={{ display: 'inline-block', width: '14px', height: '14px', backgroundColor: color, borderRadius: '3px' }} />
+            {label}
+          </span>
+        ))}
+        <span style={{ color: '#d97706' }}>▼ Current month</span>
+      </div>
+    </div>
+  );
+}
+
+# Project Timeline and Progress
+
+## Timeline
+
+The project spans 12 months from **April 2026 to March 2027**.
+
+<GanttChart />
+
+---
+
+## Current status
+
+| Task | Status | Notes |
+|---|---|---|
+| Literature review & proposal | **80% complete** | Proposal submitted; literature review substantially done |
+| Data sourcing & access agreements | **25% complete** | Initial SLTB and private operator contacts made; discussions ongoing |
+| Data pre-processing | Not started | Pending data access |
+| Baseline & ML models | Not started | Pending Phase 1 |
+| Deep learning models | Not started | Pending Phase 1–2 |
+| Hyperparameter tuning | Not started | |
+| Evaluation | Not started | |
+| Error analysis | Not started | |
+| Thesis writing | Not started | |
+
+---
+
+## Milestones
+
+| Milestone | Target | Status |
+|---|---|---|
+| Research proposal approved | Month 2 | In progress |
+| Dataset assembled and cleaned | Month 5 | Upcoming |
+| Baseline models trained and evaluated | Month 6 | Upcoming |
+| All candidate models evaluated | Month 9 | Upcoming |
+| Final model selected and documented | Month 10 | Upcoming |
+| Thesis submitted | Month 12 | Upcoming |
+
+---
+
+## Progress updates
+
+Detailed progress notes are posted to the [Progress Updates blog](/blog) as each phase advances.
