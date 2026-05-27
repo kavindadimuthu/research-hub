@@ -38,10 +38,13 @@ A **developed and evaluated passenger demand forecasting model** that:
 
 | Section | What you'll find |
 |---|---|
-| [Background & Theory](./research/background) | Literature review, time-series theory, related work |
+| [Background & Related Work](./research/background) | Literature review, time-series theory, related work |
 | [Research Gap](./research/research-gap) | Why this hasn't been done and why it matters |
-| [Research Questions](./research/questions) | RQ1–RQ4 and five objectives |
+| [Aim & Objectives](./research/aim-objectives) | Project aim and five objectives |
+| [Research Questions](./research/research-questions) | Primary RQ decomposed into RQ1–RQ4 |
 | [Methodology](./research/methodology/overview) | Phase 1–4 framework in detail |
+| [Scope & Delimitations](./research/scope) | What is and isn't covered, and why |
+| [Significance](./research/significance) | IS contribution and societal benefits |
 | [Data Sources](./data/overview) | Where the data comes from and how it's integrated |
 | [Methods & Models](./methods/overview) | Candidate methods, model families, evaluation |
 | [Timeline & Progress](./progress) | Gantt chart and current status |
@@ -56,6 +59,8 @@ A **developed and evaluated passenger demand forecasting model** that:
 | **Institution** | University of Colombo School of Computing |
 | **Programme** | Bachelor of Information Systems (Honours) |
 | **Course** | IS4101 — Final Year Research Project |
+| **Researcher** | [Researcher name] |
+| **Supervisor** | [Supervisor name] |
 | **Methodology** | Design Science Research |
 | **Corridors** | Urban (Colombo), suburban (Gampaha/Kalutara), inter-provincial |
 | **Forecast horizons** | Short-term (hourly/daily) and long-term (weekly+) |

@@ -10,7 +10,8 @@ const sidebars: SidebarsConfig = {
       items: [
         'research/background',
         'research/research-gap',
-        'research/questions',
+        'research/aim-objectives',
+        'research/research-questions',
         {
           type: 'category',
           label: 'Methodology',
@@ -22,6 +23,8 @@ const sidebars: SidebarsConfig = {
             'research/methodology/phase4-evaluation',
           ],
         },
+        'research/scope',
+        'research/significance',
       ],
     },
     {
